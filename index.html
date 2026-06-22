@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Silvia Delgado - Real Estate Agent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Real estate services by Silvia Delgado, Licensed Real Estate Salesperson at Keller Williams Realty Partners." />
+  <style>
+    :root {
+      --primary-red: #c8102e;
+      --dark: #111111;
+      --light: #ffffff;
+      --gray: #f5f5f5;
+      --accent: #222222;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary-red);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-red), #8b001f);
+      color: var(--light);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--light);
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      opacity: 0.85;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--light);
+      color: var(--primary-red);
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--light);
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--light);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-outline:hover {
+      background: var(--light);
+      color: var(--primary-red);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 2.5rem 0 2rem;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    .hero-text h1 span {
+      color: var(--primary-red);
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      background: var(--gray);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .hero-card {
+      background: var(--dark);
+      color: var(--light);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-card-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-card-header h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-card-header p {
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    .info-list {
+      list-style: none;
+      font-size: 0.9rem;
+      display: grid;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-label {
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+
+    .disclaimer {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+    }
+
+    section {
+      padding: 2rem 0 0;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1.25rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--gray);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+    }
+
+    .highlight {
+      border-left: 4px solid var(--primary-red);
+      padding-left: 0.75rem;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    form {
+      background: var(--gray);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 6px;
+      border: 1px solid #cccccc;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 2px solid var(--primary-red);
+      border-color: var(--primary-red);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-details {
+      font-size: 0.9rem;
+    }
+
+    .contact-details p {
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-details strong {
+      font-weight: 600;
+    }
+
+    .tagline {
+      font-style: italic;
+      margin-bottom: 0.75rem;
+      color: #444;
+    }
+
+    footer {
+      background: var(--dark);
+      color: var(--light);
+      padding: 1.25rem 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer-inner a {
+      color: var(--light);
+      opacity: 0.85;
+    }
+
+    .footer-inner a:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 800px) {
+      .hero,
+      .contact-wrapper,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        position: static;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      main {
+        padding-top: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">Keller Williams Realty Partners</div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Silvia</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn-outline">Contact Silvia</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <h1 id="hero-title">
+          Make your <span>home dream</span> a reality.
+        </h1>
+        <p>
+          Whether you are buying or selling, work with
+          <strong>Silvia Delgado</strong>, a dedicated
+          <strong>Licensed Real Estate Salesperson</strong> at
+          <strong>Keller Williams Realty Partners</strong>, to guide you every step of the way.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge">Licensed Real Estate Salesperson</span>
+          <span class="badge">Personalized guidance</span>
+          <span class="badge">Yorktown Heights & surrounding areas</span>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <a href="#contact" class="btn-primary">Schedule a consultation</a>
+          <a href="tel:19143306123" class="btn-outline">Call now</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Business card">
+        <div class="hero-card-header">
+          <h2>Silvia Delgado</h2>
+          <p>Licensed Real Estate Salesperson</p>
+        </div>
+        <ul class="info-list">
+          <li><span class="info-label">Office:</span> Keller Williams Realty Partners</li>
+          <li><span class="info-label">Address:</span> 2 Old Tomahawk Street, Yorktown Heights, NY 10598</li>
+          <li><span class="info-label">Cell:</span> <a href="tel:19143306123">914-330-6123</a></li>
+          <li><span class="info-label">Office:</span> <a href="tel:19149620007">914-962-0007</a></li>
+          <li><span class="info-label">Fax:</span> <a href="tel:19149620004">914-962-0004</a></li>
+          <li><span class="info-label">Email:</span> <a href="mailto:sylvyamary@yahoo.com">sylvyamary@yahoo.com</a></li>
+          <li><span class="info-label">Website:</span> <a href="https://silviadelgado.kwrealty.com" target="_blank" rel="noopener noreferrer">silviadelgado.kwrealty.com</a></li>
+        </ul>
+        <p class="disclaimer">
+          All real estate services are provided through Keller Williams Realty Partners. Please contact Silvia directly for the most up-to-date information.
+        </p>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About Silvia</h2>
+      <p class="section-subtitle">
+        Professional, committed, and focused on helping you achieve your real estate goals with confidence.
+      </p>
+
+      <div class="grid-2">
+        <div class="card highlight">
+          <h3>Your trusted real estate advisor</h3>
+          <p>
+            Silvia combines local market knowledge with a client-first mindset. She listens carefully to your needs,
+            explains each step clearly, and works tirelessly to help you buy or sell with peace of mind.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Serving Yorktown Heights and beyond</h3>
+          <p>
+            Based in Yorktown Heights, NY, Silvia works with buyers and sellers across the surrounding communities,
+            connecting them with the right opportunities and resources through Keller Williams Realty Partners.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="services-title">
+      <h2 id="services-title">Services</h2>
+      <p class="section-subtitle">
+        Tailored real estate services designed to support you from the first conversation to closing day.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Buying a home</h3>
+          <p>
+            From defining your budget and must-haves to touring properties and negotiating offers, Silvia guides you
+            through the entire buying process. Her goal is to help you find a home that truly fits your lifestyle.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Selling a property</h3>
+          <p>
+            Ready to sell? Silvia helps you price strategically, prepare your home for the market, and attract serious
+            buyers. With professional marketing and clear communication, she works to secure the best possible outcome.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY SILVIA -->
+    <section id="why" aria-labelledby="why-title">
+      <h2 id="why-title">Why work with Silvia?</h2>
+      <p class="section-subtitle">
+        Experience, dedication, and a personal approach that puts your needs first.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Personalized attention</h3>
+          <p>
+            You are never just a transaction. Silvia takes the time to understand your goals, answer your questions,
+            and keep you informed at every stage of the process.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Professional support</h3>
+          <p>
+            Backed by Keller Williams Realty Partners, Silvia has access to powerful tools, resources, and a strong
+            network—so you benefit from both personal service and professional infrastructure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact Silvia</h2>
+      <p class="section-subtitle">
+        Ready to talk about your next move? Reach out today for a no-obligation conversation.
+      </p>
+
+      <div class="contact-wrapper">
+        <form
+          action="#"
+          method="post"
+          autocomplete="on"
+          aria-label="Contact form"
+        >
+          <p class="tagline">
+            Tell Silvia a bit about your plans—buying, selling, or just exploring your options.
+          </p>
+
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="Optional" />
+
+          <label for="message">How can Silvia help you?</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="I am interested in buying/selling a home in..."
+            required
+          ></textarea>
+
+          <button type="submit" class="btn-primary" style="width:100%; margin-top:0.25rem;">
+            Send message
+          </button>
+
+          <p style="font-size:0.75rem; margin-top:0.5rem; color:#555;">
+            This form is a front-end example only. To receive messages, connect it to your preferred secure email or CRM
+            service.
+          </p>
+        </form>
+
+        <div class="contact-details">
+          <p><strong>Direct contact</strong></p>
+          <p><strong>Cell:</strong> <a href="tel:19143306123">914-330-6123</a></p>
+          <p><strong>Office:</strong> <a href="tel:19149620007">914-962-0007</a></p>
+          <p><strong>Fax:</strong> <a href="tel:19149620004">914-962-0004</a></p>
+          <p><strong>Email:</strong> <a href="mailto:sylvyamary@yahoo.com">sylvyamary@yahoo.com</a></p>
+          <p><strong>Office address:</strong><br />
+            Keller Williams Realty Partners<br />
+            2 Old Tomahawk Street<br />
+            Yorktown Heights, NY 10598
+          </p>
+          <p style="margin-top:0.75rem;">
+            Prefer to call? Tap the phone numbers above on your mobile device to dial instantly.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>
+        &copy; <span id="year"></span> Silvia Delgado &mdash; Keller Williams Realty Partners. All rights reserved.
+      </span>
+      <span>
+        Website template created for customization. Always verify information before making real estate decisions.
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // Simple, safe enhancement: dynamic year only
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
